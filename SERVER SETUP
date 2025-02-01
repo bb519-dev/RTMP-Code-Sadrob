@@ -1,0 +1,25 @@
+RTMP:
+1. Entpacke RTMP ZIP Datei-> z.b. nach C:\nginx
+2. Öffne nginx.conf mit Visual Studio Code
+3. Code einfügen/ersetzen
+
+
+
+FFMpeg:
+1. Entpacke FFmpeg -> z.b nach C:\ffmpeg
+2. Füge z.B. C:\ffmpeg\bin zu den WindowsUmgebungsvariablen 
+
+
+OBS:
+1. in einstellungen Server: rtmp://DEINE-PC-IP/live 
+
+
+Lokale IP Ermitteln:
+1. Win + R -> cmd -> Enter
+2. ipconfig eingeben -> IPv4 Adresse 
+3. Ersetze in OBS und der nginx.conf die IP durch deine also z.B in OBS rtmp://192.166.xx.xx/live 
+
+
+Server Start:
+1. Win + R -> cmd -> Enter
+2. Commando zum server start:  cd C:\nginx   ->   start nginx
