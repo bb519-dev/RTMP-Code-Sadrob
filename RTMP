@@ -17,7 +17,7 @@ rtmp {
             push rtmp://live.twitch.tv/app/STREAMKEY;   #ersetze STREAMKEY mit Twitch key
 
             # Falls OBS ausfällt, -> Fallback stream Aktivieren
-            exec_static ffmpeg -re -stream_loop -1 -i fallback.mp4 -c:v libx264 -preset ultrafast -b:v 1500k -maxrate 1500k -bufsize 3000k -pix_fmt yuv420p -f flv rtmp://127.0.0.1/live/fallback; #fallback.mp4 ersetzten mit Clips
+            exec_static ffmpeg -re -stream_loop -1 -i C:/nginx/html/fallback.mp4 -c:v libx264 -preset ultrafast -b:v 1500k -maxrate 1500k -bufsize 3000k -pix_fmt yuv420p -f flv rtmp://127.0.0.1/live/fallback; #fallback.mp4 ersetzten mit Clips
         }
 
         # Fallback-Stream
