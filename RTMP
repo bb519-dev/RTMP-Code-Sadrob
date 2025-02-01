@@ -1,0 +1,29 @@
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+rtmp {
+    server {
+        listen 1935;  # RTMP-Server-Port
+
+        # Hauptstream-Eingang OBS oder IRL
+        application live {
+            live on;
+            record off;
+
+            # Twitch weiterleitung
+            push rtmp://live.twitch.tv/app/STREAMKEY;   #ersetze STREAMKEY mit Twitch key
+
+            # Falls OBS ausfällt, -> Fallback stream Aktivieren
+            exec_static ffmpeg -re -stream_loop -1 -i fallback.mp4 -c:v libx264 -preset ultrafast -b:v 1500k -maxrate 1500k -bufsize 3000k -pix_fmt yuv420p -f flv rtmp://127.0.0.1/live/fallback;
+        }
+
+        # Fallback-Stream
+        application fallback {
+            live on;
+            pull rtmp://127.0.0.1/live/fallback;
+        }
+    }
+}
